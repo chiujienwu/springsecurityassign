@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="frags :: head">HEAD</head>
+<body>
+<header th:replace="frags :: header">HEADER</header>
+<div id="grid">
+    <div></div>
+    <div id="container">
+        <form th:action="@{/login}" method="post">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" autofocus="autofocus"/>
+            <br/>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"/>
+            <br/>
+            <input id="login" type="submit" value="Log in"/>
+        </form>
+        <div th:if="${param.error}" class="alert">
+            Invalid username or password.
+        </div>
+        <div th:if="${param.logout}" class="alert">
+            You have been logged out.
+        </div>
+    </div>
+    <div></div>
+</div>
+</body>
+</html>

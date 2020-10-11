@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="frags :: head">
+</head>
+<body>
+<!-- start of body -->
+<header th:replace="frags :: header"></header>
+<main>
+    <div class="container">
+<!--        <div th:insert="fragments/_header :: header"></div>-->
+        <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+            <div class="row">
+                <div class="col-md-11 px-0">
+                    <h1 class="display-4 font-italic">Distributed Java Spring Security Assignment</h1>
+                    <p class="lead my-3">Demonstration of authentication and authorization</p>
+                </div><!-- /.column -->
+                <div class="col-md-1 px-0">
+                    <img th:src="@{/img/wfc.jpg}" width="100px" height="100px"
+                         alt="WFC Logo"/>
+                </div>
+            </div><!-- /.row -->
+        </div><!-- /.jumbotron -->
+    </div><!-- /.container -->
+</main>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title>WFC:  You are a Resource</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" th:href="@{/images/favicon.ico}"/>
+    <title>Spring Security</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body>
+<header th:fragment="header">
+    <nav class="parent">
+        <div class="div1">
+            <a th:href="@{/}">
+                <img th:src="@{/img/WFC.jpg}" width="150px" height="150px" alt="WFC Logo">
+            </a>
+        </div>
+        <div class="div2">
+            <h1>Employee Benefits</h1>
+        </div>
+        <div class="div3">
+            <h1>Secret Recipe</h1>
+        </div>
+        <div class="div4">
+            <!--if user is not logged in, show login link-->
+            <div sec:authorize="isAnonymous()">
+                <a th:href="@{/login}">Login</a>
+            </div>
+            <!--otherwise-->
+            <!--show greeting and logout link-->
+            <div sec:authorize="isAuthenticated()">
+                <h1 th:text="|HELLO ${#authentication.name}|">GREETING</h1>
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" value="logout" id="logout">
+                </form>
+            </div>
+        </div>
+        <div class="div5">
+            <!--if role is employee, show employee link-->
+            <div sec:authorize="hasAuthority('employee')">
+                <a th:href="@{/benefits}">Employee Benefits</a>
+            </div>
+        </div>
+        <div class="div6">
+            <!--if role is major, show major link-->
+            <div sec:authorize="hasAuthority('major')">
+                <a th:href="@{/secret}">Secret Recipe</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+</body>
+<html>
