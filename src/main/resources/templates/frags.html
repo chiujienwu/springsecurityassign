@@ -14,18 +14,12 @@
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
 </head>
 <body>
-<header th:fragment="header">
-    <nav class="parent">
-        <div class="div1">
+<header class="blog-header py-3" th:fragment="header">
+    <nav class="row flex-nowrap justify-content-between align-items-center">
+        <div class="blog-header-logo text-dark">
             <a th:href="@{/}">
                 <img th:src="@{/img/WFC.jpg}" width="150px" height="150px" alt="WFC Logo">
             </a>
-        </div>
-        <div class="div2">
-            <h1>Employee Benefits</h1>
-        </div>
-        <div class="div3">
-            <h1>Secret Recipe</h1>
         </div>
         <div class="div4">
             <!--if user is not logged in, show login link-->

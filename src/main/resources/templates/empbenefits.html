@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Employee Benefits Page</title>
+<head th:replace="frags :: head">
 </head>
 <body>
-Any authenticated user can visit.
+<header th:replace="frags :: header"></header>
+<h1>Employee Benefits</h1>
+<ul>
+    <li>3 Day weekends for all employees who is not management.</li>
+    <li>Free breakfasts and lunches Mon - Thr.</li>
+    <li>Free Medical, Dental, Vision, Life and Pet Insurance.</li>
+    <li>Mileage reimbursement based on Google Map Drive Distance per IRS.</li>
+</ul>
 
-3 Day weekends for all employees who is not management.
+
 </body>
 <html>
