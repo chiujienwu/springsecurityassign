@@ -16,8 +16,12 @@ public class HomeController {
     }
 
     @RequestMapping("/benefits")
-    public String showBenefitsPage() { return "empbenefits"; }
+    public String showBenefitsPage() {
+        return "empbenefits";
+    }
 
     @RequestMapping("/secret")
-    public String showSecretPage() { return "secretrecipe"; }
+    public String showSecretPage() {
+        return "secretrecipe";
+    }
 }

@@ -17,28 +17,28 @@
 <header class="blog-header py-3" th:fragment="header">
     <div class="row flex-nowrap justify-content-between align-items-center">
         <div class="col">
-                <a class="blog-header-logo text-dark" th:href="@{/}">
-                    <img th:src="@{/img/WFC.jpg}" width="100px" height="100px" alt="WFC Logo"/>
-                </a>
+            <a class="blog-header-logo text-dark" th:href="@{/}">
+                <img th:src="@{/img/WFC.jpg}" width="100px" height="100px" alt="WFC Logo"/>
+            </a>
         </div>
     </div>
 
-        <div class="nav-scroller py-1 mb-2">
-            <nav class="nav d-flex justify-content-between">
-                <a class="p-2 text-muted"  th:href="@{/}">Home</a>
-                <a class="p-2 text-muted" sec:authorize="isAnonymous()" th:href="@{/login}">Login</a>
-                <a class="p-2 text-muted" sec:authorize="hasAuthority('employee')" th:href="@{/benefits}">Employee
-                    Benefits</a>
-                <a class="p-2 text-muted" sec:authorize="hasAuthority('major')" th:href="@{/secret}">Secret Recipe</a>
+    <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+            <a class="p-2 text-muted" th:href="@{/}">Home</a>
+            <a class="p-2 text-muted" sec:authorize="isAnonymous()" th:href="@{/login}">Login</a>
+            <a class="p-2 text-muted" sec:authorize="hasAuthority('employee')" th:href="@{/benefits}">Employee
+                Benefits</a>
+            <a class="p-2 text-muted" sec:authorize="hasAuthority('major')" th:href="@{/secret}">Secret Recipe</a>
 
-                <div class="p-2 text-muted" sec:authorize="isAuthenticated()">
-                    <h5 th:text="|Hi, ${#authentication.name}|">GREETING</h5>
-                    <form th:action="@{/logout}" method="post">
-                        <input type="submit" value="logout" id="logout">
-                    </form>
-                </div>
-            </nav>
-        </div>
+            <div class="p-2 text-muted" sec:authorize="isAuthenticated()">
+                <h5 th:text="|Hi, ${#authentication.name}|">GREETING</h5>
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" value="logout" id="logout">
+                </form>
+            </div>
+        </nav>
+    </div>
 
 </header>
 
