@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:fragment="head">
     <meta charset="UTF-8"/>
-    <title>WFC:  You are a Resource</title>
+    <title>WFC: You are a Resource</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -15,39 +15,31 @@
 </head>
 <body>
 <header class="blog-header py-3" th:fragment="header">
-    <nav class="row flex-nowrap justify-content-between align-items-center">
-        <div class="blog-header-logo text-dark">
-            <a th:href="@{/}">
-                <img th:src="@{/img/WFC.jpg}" width="150px" height="150px" alt="WFC Logo">
-            </a>
+    <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col">
+                <a class="blog-header-logo text-dark" th:href="@{/}">
+                    <img th:src="@{/img/WFC.jpg}" width="100px" height="100px" alt="WFC Logo"/>
+                </a>
         </div>
-        <div class="div4">
-            <!--if user is not logged in, show login link-->
-            <div sec:authorize="isAnonymous()">
-                <a th:href="@{/login}">Login</a>
-            </div>
-            <!--otherwise-->
-            <!--show greeting and logout link-->
-            <div sec:authorize="isAuthenticated()">
-                <h1 th:text="|HELLO ${#authentication.name}|">GREETING</h1>
-                <form th:action="@{/logout}" method="post">
-                    <input type="submit" value="logout" id="logout">
-                </form>
-            </div>
+    </div>
+
+        <div class="nav-scroller py-1 mb-2">
+            <nav class="nav d-flex justify-content-between">
+                <a class="p-2 text-muted"  th:href="@{/}">Home</a>
+                <a class="p-2 text-muted" sec:authorize="isAnonymous()" th:href="@{/login}">Login</a>
+                <a class="p-2 text-muted" sec:authorize="hasAuthority('employee')" th:href="@{/benefits}">Employee
+                    Benefits</a>
+                <a class="p-2 text-muted" sec:authorize="hasAuthority('major')" th:href="@{/secret}">Secret Recipe</a>
+
+                <div class="p-2 text-muted" sec:authorize="isAuthenticated()">
+                    <h5 th:text="|Hi, ${#authentication.name}|">GREETING</h5>
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" value="logout" id="logout">
+                    </form>
+                </div>
+            </nav>
         </div>
-        <div class="div5">
-            <!--if role is employee, show employee link-->
-            <div sec:authorize="hasAuthority('employee')">
-                <a th:href="@{/benefits}">Employee Benefits</a>
-            </div>
-        </div>
-        <div class="div6">
-            <!--if role is major, show major link-->
-            <div sec:authorize="hasAuthority('major')">
-                <a th:href="@{/secret}">Secret Recipe</a>
-            </div>
-        </div>
-    </nav>
+
 </header>
 
 </body>
